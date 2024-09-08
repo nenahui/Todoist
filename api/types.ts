@@ -3,6 +3,7 @@ import { Model, Types } from 'mongoose';
 export interface UserFields {
   username: string;
   password: string;
+  image: string | null;
   token: string;
 }
 

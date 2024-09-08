@@ -18,6 +18,7 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
     required: true,
     minlength: 4,
   },
+  image: String,
   token: {
     type: String,
     required: true,
