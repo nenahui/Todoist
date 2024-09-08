@@ -1,11 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { config } from './config';
+import { tasksRouter } from './routers/tasks';
 import { usersRouter } from './routers/users';
 
 const app = express();
 app.use(express.json());
 app.use('/users', usersRouter);
+app.use('/tasks', tasksRouter);
 
 const run = async () => {
   await mongoose.connect(config.database);
