@@ -3,9 +3,12 @@ import mongoose from 'mongoose';
 import { config } from './config';
 import { tasksRouter } from './routers/tasks';
 import { usersRouter } from './routers/users';
+import cors from 'cors';
 
 const app = express();
+app.use(cors(config.corsOptions));
 app.use(express.json());
+app.use(express.static('public'));
 app.use('/users', usersRouter);
 app.use('/tasks', tasksRouter);
 
