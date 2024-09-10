@@ -45,8 +45,9 @@ export const Auth: React.FC<Props> = ({ type }) => {
   };
 
   useEffect(() => {
-    if (user && user.token) {
+    if (user) {
       localStorage.setItem('token', user.token);
+      localStorage.setItem('user', user._id);
       navigate('/');
     }
   }, [navigate, user]);

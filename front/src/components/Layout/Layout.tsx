@@ -3,7 +3,7 @@ import React, { type PropsWithChildren } from 'react';
 
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className={'container mx-auto'}>
+    <div className={'container mx-auto mt-4'}>
       {/* <Header /> */}
       {children}
       <Toaster />

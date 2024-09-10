@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { handleError } from '../lib/handleError';
 import { User } from '../models/User';
 import { imagesUpload } from '../multer';
 
@@ -46,6 +47,8 @@ usersRouter.post('/sessions', async (req, res, next) => {
 
     return res.send(user);
   } catch (error) {
+    handleError(error, res, next);
+
     return next(error);
   }
 });

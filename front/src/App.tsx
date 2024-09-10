@@ -1,7 +1,9 @@
 import { Layout } from '@/components/Layout/Layout';
 import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
 import { Auth } from '@/features/Auth/Auth';
-import { Home } from '@/features/Home/Home';
+import { NewTask } from '@/features/Task/NewTask';
+import { Task } from '@/features/Task/Task';
+import { TaskEdit } from '@/features/Task/TaskEdit';
 import React, { useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
@@ -22,7 +24,9 @@ export const App: React.FC = () => {
         <Routes>
           <Route path={'/auth/login'} element={<Auth type={'login'} />} />
           <Route path={'/auth/signup'} element={<Auth type={'register'} />} />
-          <Route path={'/'} element={<Home />} />
+          <Route path={'/'} element={<Task />} />
+          <Route path={'/new-task'} element={<NewTask />} />
+          <Route path={'/task-edit/:taskId'} element={<TaskEdit />} />
         </Routes>
       </Layout>
     </ThemeProvider>

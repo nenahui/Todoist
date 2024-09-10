@@ -51,6 +51,25 @@ tasksRouter.get('/', auth, async (req: RequestWithUser, res, next) => {
   }
 });
 
+tasksRouter.get('/:id', auth, async (req: RequestWithUser, res, next) => {
+  try {
+    const id = req.params.id;
+    const { user } = req;
+
+    if (!user) {
+      return res.status(401).send({ error: 'User not found' });
+    }
+
+    const task = await Task.findOne({ user: user._id, _id: id });
+
+    return res.send(task);
+  } catch (error) {
+    handleError(error, res, next);
+
+    return next(error);
+  }
+});
+
 tasksRouter.put('/:id', auth, async (req: RequestWithUser, res, next) => {
   try {
     const { user, body, params } = req;
